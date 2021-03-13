@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            String matrikelnummer = inputNumber.getText().toString();
+            Connection con = new Connection(matrikelnummer);
 
             }
         });
