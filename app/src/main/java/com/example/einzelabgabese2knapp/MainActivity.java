@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class MainActivity extends Activity {
 
     Button b;
@@ -27,13 +29,14 @@ public class MainActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            serverAnswer.setVisibility(View.VISIBLE);
             String matrikelnummer = inputNumber.getText().toString();
             Connection con = new Connection(matrikelnummer);
 
             con.start();
             try{
                 con.join();
-            }catch (Exception e){}
+            }catch (InterruptedException e){}
 
             serverAnswer.setText(con.getAnswer());
             }
