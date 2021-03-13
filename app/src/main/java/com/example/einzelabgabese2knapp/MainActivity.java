@@ -30,7 +30,14 @@ public class MainActivity extends Activity {
             String matrikelnummer = inputNumber.getText().toString();
             Connection con = new Connection(matrikelnummer);
 
+            con.start();
+            try{
+                con.join();
+            }catch (Exception e){}
+
+            serverAnswer.setText(con.getAnswer());
             }
+
         });
 
     }
