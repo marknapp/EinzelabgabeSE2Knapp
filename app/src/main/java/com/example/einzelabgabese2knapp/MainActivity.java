@@ -46,7 +46,21 @@ public class MainActivity extends Activity {
         berechnen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                serverAnswer.setVisibility(View.VISIBLE);
+                String matrikelnummer = inputNumber.getText().toString();
+                Connection con = new Connection(matrikelnummer);
 
+                con.start();
+                try {
+                    con.join();
+                } catch (InterruptedException e) {
+                }
+                if(!con.getAnswer().equals("Dies ist keine gueltige Matrikelnummer")){
+                    berechnen(matrikelnummer);
+                }
+                else{
+                    serverAnswer.setText("Das ist keine Matrikelnummer");
+                }
             }
         });
     }
