@@ -12,6 +12,7 @@ import java.io.IOException;
 public class MainActivity extends Activity {
 
     Button b;
+    Button berechnen;
     TextView serverAnswer;
     EditText inputNumber;
 
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         b = findViewById(R.id.button);
+        berechnen = findViewById(R.id.button2);
         serverAnswer = findViewById(R.id.textView);
         inputNumber = findViewById(R.id.editTextNumber);
 
@@ -39,6 +41,12 @@ public class MainActivity extends Activity {
             serverAnswer.setText(con.getAnswer());
             }
 
+        });
+        berechnen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
         });
 
     }

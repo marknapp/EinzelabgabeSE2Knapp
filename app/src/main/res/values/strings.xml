@@ -2,4 +2,5 @@
     <string name="app_name">EinzelabgabeSE2Knapp</string>
     <string name="antwort_vom_server">Antwort vom Server</string>
     <string name="senden">Senden</string>
+    <string name="berechnen">Berechnen</string>
 </resources>
