@@ -29,16 +29,17 @@ public class MainActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            serverAnswer.setVisibility(View.VISIBLE);
-            String matrikelnummer = inputNumber.getText().toString();
-            Connection con = new Connection(matrikelnummer);
+                serverAnswer.setVisibility(View.VISIBLE);
+                String matrikelnummer = inputNumber.getText().toString();
+                Connection con = new Connection(matrikelnummer);
 
-            con.start();
-            try{
-                con.join();
-            }catch (InterruptedException e){}
+                con.start();
+                try {
+                    con.join();
+                } catch (InterruptedException e) {
+                }
 
-            serverAnswer.setText(con.getAnswer());
+                serverAnswer.setText(con.getAnswer());
             }
 
         });
@@ -48,6 +49,31 @@ public class MainActivity extends Activity {
 
             }
         });
+    }
+        public void berechnen(String matNr) {
+            int firstSum = 0;
+            int secondSum = 0;
+            int[] numbers = new int[matNr.length()];
+            char[] c = matNr.toCharArray();
+
+            for (int i = 0; i < matNr.length(); i++) {
+                numbers[i] = (int) c[i]-48;
+            }
+            for (int i = 0; i < numbers.length; i++) {
+                if (i % 2 == 0) {
+                    firstSum += numbers[i];
+                } else {
+                    secondSum += numbers[i];
+                }
+            }
+            int alternierendeQuersumme = firstSum-secondSum;
+            if(alternierendeQuersumme%2==0){
+                serverAnswer.setText("GERADE");
+            }
+            else{
+                serverAnswer.setText("UNGERADE");
+            }
+
+        }
 
     }
-}
